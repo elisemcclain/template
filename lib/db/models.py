@@ -1,14 +1,18 @@
 from sqlalchemy import Column, String, Integer, ForeignKey
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import relationship
 
 
-class Base(DeclarativeBase):
-    pass
+Base = declarative_base()
 
 class Artist(Base):
     __tablename__ = "artists"
-    id = Column('id', primary_key = True)
+    id = Column('id', Integer, primary_key = True)
     name = Column(String())
+    
+    def __repr__(self):
+        return f'Id: {self.id},' \
+            f'Name: {self.name}'
+    
 
 
