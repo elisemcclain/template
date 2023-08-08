@@ -1,24 +1,37 @@
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import PrimaryKeyConstraint, Column, String, Integer, ForeignKey, create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import relationship
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import DateTime
+#from ????? import backref
+
 
 Base = declarative_base()
 
 class Artist(Base):
     __tablename__ = "artists"
-    id = Column('id', Integer, primary_key = True)
+    __table_args__ = (PrimaryKeyConstraint('id'),)
+
+    id = Column(Integer, primary_key = True)
     name = Column(String())
     genre = Column(String())
+
+    #foreign key for festival
+    festival_id = Column(Integer, ForeignKey("festival.id"))
+    festival = relationship("Festival", backref="performing_artists")
     
     def __repr__(self):
         return f'Id: {self.id},' \
-            + f'Name: {self.name}'
+            + f'Name: {self.name}' \
+            + f'Genre: {self.genre}'
     
 
 
-class Field(Base):
-    __table__ = "field"
-    id = Column('id', Integer, primary_key = True)
+class Stage(Base):
+    __tablename__ = "stage"
+    # __table_args__ = (PrimaryKeyConstraint('id'))
+
+    id = Column(Integer, primary_key = True)
     name = Column(String())
     location = Column(String())
     #times = Column(Integer())
@@ -28,14 +41,19 @@ class Field(Base):
             + f'Name: {self.name},' \
             + f'Location: {self.location}' 
 
-
 class Festival(Base):
-    __table__ = "festival"
+    __tablename__ = "festival"
+    # __table_args__= (PrimaryKeyConstraint('id'))
+
     id = Column('id', Integer, primary_key = True)
     name = Column(String())
     start_date = Column(DateTime())
     end_date = Column(DateTime())
     #times = Column(Integer())
+
+    #parent
+    artists = relationship("Artist", backref="festival")
+    #double check if artists is singular or plural
 
     def __repr__(self):
         return f'Id: {self.id},' \

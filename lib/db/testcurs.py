@@ -1,15 +1,19 @@
 import sqlite3
+from pyfiglet import Figlet
 conn = sqlite3.connect('concert_app.db')
 cursor = conn.cursor()
-# cursor.execute("SELECT name from artists")
-# rows = cursor.fetchall()
-# for row in rows:
-#     print(row[0])
+cursor.execute("SELECT name from artists")
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
     
 user_input = ""
-# print('Welcome to FlatFest!! \n 1. Festival Dates \n 2. Find Field \n 3. Find Artist')
+f = Figlet(font='cybermedium')
+print(f)
+print('Welcome to FlatFest!! \n 1. Festival Dates \n 2. Find Stage \n 3. Find Artist')
+print(Figlet().getFonts())
 while user_input not in ["quit", "q"]:
-    user_input = input('Welcome to FlatFest!! \n 1. Festival Dates \n 2. Find Field \n 3. Find Artist \n')
+    user_input = input(f.renderText('Welcome to FlatFest!!') + 'Type a number between 1-3 to continue: \n 1. Festival Dates \n 2. Find Stage \n 3. Find Artist \n')
     if user_input == "1":
         # cursor.execute("SELECT name from artists")
         # replace
@@ -29,6 +33,9 @@ while user_input not in ["quit", "q"]:
         pass
     elif user_input == "3":
         pass
+    elif user_input == '4':
+        pass
+        #
         
 # print("hello " + input)
 conn.close()
