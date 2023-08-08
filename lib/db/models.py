@@ -28,7 +28,7 @@ class Artist(Base):
 
 
 class Stage(Base):
-    __tablename__ = "stage"
+    __tablename__ = "stages"
     # __table_args__ = (PrimaryKeyConstraint('id'))
 
     id = Column(Integer, primary_key = True)
