@@ -68,6 +68,9 @@ if __name__ == '__main__':
     khalid = Artist(name='Khalid', stage=2, time =t3, day_perform = dates_list[2], genre = gen2)
     
     
+    # print(gen1.artists)
+    # wknd2.genre = gen1
+    # print(gen1.artists)
 
     flatfest = session.query(Festival).filter_by(name='Flatfest').first()
     flatfest.artists.extend([rex, zedd2, ella, bruno, wknd2, gryf2, rex2, ari, ari2, dhruv, zedd, west, wknd, orange, ari3, drag, gryf, khalid])
