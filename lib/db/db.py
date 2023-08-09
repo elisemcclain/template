@@ -8,6 +8,9 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
+
+    def create_session():
+        return Session()
     
     # print('test')
     
@@ -23,7 +26,11 @@ if __name__ == '__main__':
     # times = ['6:30pm', '7:30pm', '8:30pm']
     f1 = Festival(name="Coachella", day_one=d1, day_two=d2, day_three=d3)
     
+    # test()
     
+    sza = Artist(name="SZA")
+    f1 = Stage(name="Moonlight Stage", location = "South")
+    session.add(sza)
     session.add(f1)
     session.commit()
    
@@ -31,3 +38,19 @@ if __name__ == '__main__':
     # session.commit()
     
     
+    print('hi dead world')
+    
+    # test()
+    
+    sza = Artist(name="SZA")
+    f1 = Stage(name="Moonlight Stage", location = "South")
+    session.add(sza)
+    session.add(f1)
+    session.commit()
+
+    all_artists = session.query(Artist).all()
+    for artist in artists:
+        print(f'Artist: {artist.name}')
+        for stage in artist.stage:
+            print(f'Stage: {stage.name}')
+
