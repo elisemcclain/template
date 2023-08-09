@@ -1,8 +1,8 @@
-"""1
+"""empty message
 
-Revision ID: 013c26595fdf
+Revision ID: 30e6e3d92fc0
 Revises: 
-Create Date: 2023-08-08 20:04:01.684995
+Create Date: 2023-08-09 11:05:37.939996
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '013c26595fdf'
+revision: str = '30e6e3d92fc0'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -23,8 +23,9 @@ def upgrade() -> None:
     op.create_table('artists',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
-    sa.Column('genre', sa.String(), nullable=True),
     sa.Column('day_perform', sa.String(), nullable=True),
+    sa.Column('stage', sa.Integer(), nullable=True),
+    sa.Column('time', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('festivals',

@@ -12,9 +12,7 @@ if __name__ == '__main__':
     def create_session():
         return Session()
     
-    # print('test')
-    
-    # test()
+
     
     asd = Artist(name="as", genre='123', day_perform = ' aa')
     # f1 = Field(name="asd", location = "abc")
@@ -37,16 +35,12 @@ if __name__ == '__main__':
     
     # session.commit()
     
-    
-    print('hi dead world')
-    
-    # test()
-    
-    sza = Artist(name="SZA")
-    f1 = Stage(name="Moonlight Stage", location = "South")
-    session.add(sza)
-    session.add(f1)
-    session.commit()
+        
+    # sza = Artist(name="SZA")
+    # f1 = Stage(name="Moonlight Stage", location = "South")
+    # session.add(sza)
+    # session.add(f1)
+    # session.commit()
 
     all_artists = session.query(Artist).all()
     for artist in artists:
