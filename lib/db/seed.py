@@ -58,9 +58,12 @@ if __name__ == '__main__':
     khalid2 = Artist(name='Khalid', stage=2, time =t3, day_perform = dates_list[2], genre = gen2)
     gryf = Artist(name='Gryffin', stage=2, time =t2, day_perform = dates_list[2], genre = gen3)
     
+    # print(gen1.artists)
+    # wknd2.genre = gen1
+    # print(gen1.artists)
 
-    flatfest = session.query(Festival).filter_by(name='Flatfest').first()
-    flatfest.artists.extend([rex2,ari2,ari3,wknd2,zedd2,khalid2,gryf2,rex,wknd,zedd,gryf,ari,khalid])
+    # flatfest = session.query(Festival).filter_by(name='Flatfest').first()
+    # flatfest.artists.extend([rex2,ari2,ari3,wknd2,zedd2,khalid2,gryf2,rex,wknd,zedd,gryf,ari,khalid])
     # extend = append iterables
     # append artists to festival selected using query 
     

@@ -5,38 +5,20 @@ import sqlite3, os, time, sys
 from pyfiglet import Figlet
 conn = sqlite3.connect('concert_app.db')
 cursor = conn.cursor()
-# cursor.execute("SELECT * FROM artists WHERE stage = 2")
-# rows = cursor.fetchall()
-# for row in rows:
-#     print(row[1])
-    
 user_input = ""
 f = Figlet(font='smslant')
 d = Figlet(font='doom')
 small = Figlet(font='small')
 # http://www.figlet.org/examples.html ---> figlet fonts
 # print(f)
-# print('Welcome to FlatFest!! \n 1. Festival Dates \n 2. Find Field \n 3. Find Artist')
-# print(Figlet().getFonts())
-# print()
 names = ['BROUGHT TO YOU BY', 'ELISE', 'MEGAN', 'SAM']
 for i in names:
     print(d.renderText(i)),
     sys.stdout.flush()
-    time.sleep(0.75)
-# def second_input_func(second_input):
-#     while second_input not in ['back', 'b']:
-#         second_input = input()
-#         if second_input == '1':
-                
-#             cursor.execute("SELECT name FROM artists WHERE")
-#             for row in cursor.fetchall():
-#                 print(row[0])
-    
-        
+    time.sleep(0.1)
                     
 while user_input not in ["quit", "q"]:
-    user_input = input(f.renderText('Welcome to FlatFest ! !') + 'Type a number to continue: \n 1. Festival Dates \n 2. Details by Artist \n 3. Details by Genre \n 4. Add New Performance \n(Type "quit" or "q" to exit) \n')
+    user_input = input(f.renderText('Welcome to FlatFest ! !') + 'Type a number to continue: \n 1. Festival Dates \n 2. Details by Artist \n 3. Details by Genre \n(Type "quit" or "q" to exit) \n')
     if user_input == "1":
         cursor.execute("SELECT day_perform FROM artists")
         #STORED INSIDE CURSOR.FETCHALL()
@@ -84,14 +66,14 @@ while user_input not in ["quit", "q"]:
             str += f'{i}. ' + row[0] + '\n'
             genres.append(row[0])
             i+=1
-        second_input=input('\nFind details for any artist: \n (Type "back" or "b" to return) \n' + str)
+        second_input=input('\nFind artists for any genre: \n (Type "back" or "b" to return) \n' + str)
         while second_input not in ['back', 'b']:
             sql1 = "SELECT name FROM artists WHERE genre_id = ?"
-            cursor.execute(sql1, (genres[int(second_input)],))
+            cursor.execute(sql1, (int(second_input),))
             print(small.renderText(genres[int(second_input)]))
-        for row in sorted(set(cursor.fetchall())):
-            print(f'')
-        second_input = input('\nFind details for any artist: \n (Type "back" or "b" to return) \n' + str)
+            for row in sorted(set(cursor.fetchall())):
+                print(row[0])
+            second_input = input('\nFind artists for any genre: \n (Type "back" or "b" to return) \n' + str)
 
 
     
