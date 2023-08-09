@@ -82,7 +82,7 @@ while user_input not in ["quit", "q"]:
         str = ''
         for row in sorted(set(cursor.fetchall())):
             str += f'{i}. ' + row[0] + '\n'
-            genres.append(row[0])
+            genres.append(c[0])
             i+=1
         second_input=input('\nFind details for any artist: \n (Type "back" or "b" to return) \n' + str)
         while second_input not in ['back', 'b']:
@@ -96,11 +96,11 @@ while user_input not in ["quit", "q"]:
 
     
     
-    elif user_input == '4':
-        print('Festival name (e.g. Coachella)')
-        sql1 = "INSERT INTO"
-        second_
-        pass
+    # elif user_input == '4':
+    #     print('Festival name (e.g. Coachella)')
+    #     sql1 = "INSERT INTO"
+    #     second_
+    #     pass
     else:
         if user_input in ['quit', 'q']:
             exit()
