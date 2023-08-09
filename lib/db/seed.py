@@ -29,8 +29,8 @@ if __name__ == '__main__':
     t2 = '7:30 pm'
     t3 = '8:30 pm'
     
-    # flatfest = Festival(name="Flatfest", day_one=dates_list[0], day_two=dates_list[1], day_three=dates_list[2])
     # flatfest2 = Festival(name="Flatfest 2.0", day_one=dates_list2[0], day_two=dates_list2[1], day_three=dates_list2[2])
+    # flatfest = Festival(name="Flatfest", day_one=dates_list[0], day_two=dates_list[1], day_three=dates_list[2])
     # session.add(flatfest)
     # session.commit()
         # create instance of festival, day1-3 placeholder properties for now
