@@ -28,7 +28,7 @@ class Genre(Base):
     __tablename__ = "genres"
     id = Column('id', Integer, primary_key=True)
     genre = Column(String())
-    artists = relationship('Artist', back_populates='genres')
+    artists = relationship('Artist', back_populates='genre')
     def __repr__(self):
         return f'Id: {self.id}' \
         + f'Genre: {self.genre}'

@@ -23,7 +23,7 @@ names = ['BROUGHT TO YOU BY', 'ELISE', 'MEGAN', 'SAM']
 for i in names:
     print(d.renderText(i)),
     sys.stdout.flush()
-    time.sleep(0.75)
+    time.sleep(0)
 # def second_input_func(second_input):
 #     while second_input not in ['back', 'b']:
 #         second_input = input()
@@ -36,7 +36,7 @@ for i in names:
         
                     
 while user_input not in ["quit", "q"]:
-    user_input = input(f.renderText('Welcome to FlatFest ! !') + 'Type a number to continue: \n 1. Festival Dates \n 2. Details by Artist \n 3. Details by Genre \n 4. Add New Performance \n(Type "quit" or "q" to exit) \n')
+    user_input = input(f.renderText('Welcome to FlatFest ! !') + 'Type a number to continue: \n 1. Festival Dates \n 2. Details by Artist \n 3. Details by Genre\n(Type "quit" or "q" to exit) \n')
     if user_input == "1":
         cursor.execute("SELECT day_perform FROM artists")
         #STORED INSIDE CURSOR.FETCHALL()
@@ -87,11 +87,11 @@ while user_input not in ["quit", "q"]:
         second_input=input('\nFind details for any artist: \n (Type "back" or "b" to return) \n' + str)
         while second_input not in ['back', 'b']:
             sql1 = "SELECT name FROM artists WHERE genre_id = ?"
-            cursor.execute(sql1, (genres[int(second_input)],))
+            cursor.execute(sql1, (int(second_input),))
             print(small.renderText(genres[int(second_input)]))
-        for row in sorted(set(cursor.fetchall())):
-            print(f'')
-        second_input = input('\nFind details for any artist: \n (Type "back" or "b" to return) \n' + str)
+            for row in sorted(set(cursor.fetchall())):
+                print(row)
+            second_input = input('\nFind details for any artist: \n (Type "back" or "b" to return) \n' + str)
 
 
     
