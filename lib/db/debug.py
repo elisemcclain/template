@@ -1,22 +1,18 @@
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import sessionmaker
-# from models import Base, Artist
-# from functions import test
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from models import (Artist, Festival, Genre, Base)
 
-# if __name__ == '__main__':
-#     engine = create_engine('sqlite:///concert_app.db')
-#     Base.metadata.create_all(engine)
-#     Session = sessionmaker(bind=engine)
-#     session = Session()
-    
+if __name__ == '__main__':
+    engine = create_engine('sqlite:///concert_app.db')
+    Base.metadata.create_all(engine)
+   
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
-    # clairo = Artist(name="Clairo", genre="Alt/Indie")
-    # tswizzle = Artist(name="TSwizzle", genre="Pop")
-    # sza = Artist(name="SZA", genre="R&B")
+    # get festival artists
+    festival = session.query(Festival).first()
 
-    # session.bulk_save_objects([clairo, tswizzle, sza])
-    # session.commit()
+    # use filter_by to get festival artists from Artist
+    festival_artists = session.query(Artist).filter_by(id=owner.id)
+    print([festival for festival in artist_festival])
 
-    # all_artists = session.query(Artist)
-    # artist_names = [name for name in session.query(Artist.name)]
-    # print(artist_names)

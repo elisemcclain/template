@@ -36,6 +36,8 @@ while user_input not in ["quit", "q"]:
     user_input = input(f.renderText('Welcome to FlatFest ! !') + 'Type a number to continue: \n 1. Festival Dates \n 2. Details by Artist \n (Type "quit" or "q" to exit) \n')
     if user_input == "1":
         cursor.execute("SELECT day_perform FROM artists")
+        #STORED INSIDE CURSOR.FETCHALL()
+
         i = 1
         str = ''
         dates =['0'] 
