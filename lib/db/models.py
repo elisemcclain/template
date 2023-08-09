@@ -93,11 +93,13 @@ if __name__ == '__main__':
     
     
     coachella = session.query(Festival).filter_by(name='Coachella').first()
-    coachella.artists.extend([rex2,ari2,ari3,wknd2,zedd2,khalid2,gryf2])
+    # coachella.artists.extend([rex2,ari2,ari3,wknd2,zedd2,khalid2,gryf2])
     # extend = append iterables
     # append artists to festival selected using query 
     
-    session.commit()
+    # artists = session.query(Artist).first()
+    # print(artists.name)
+    # session.commit()
 
 # class Artist(Base):
 #     __tablename__ = "artists"
