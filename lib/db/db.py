@@ -54,3 +54,5 @@ if __name__ == '__main__':
         for stage in artist.stage:
             print(f'Stage: {stage.name}')
 
+
+    

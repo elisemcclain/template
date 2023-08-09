@@ -29,9 +29,12 @@ class Artist(Base):
     # genre = relationship('Genre', back_populates='artists')
     day_perform = Column(String())
     stage = Column(Integer())
+    time = Column(String())
     festivals = relationship('Festival', secondary=festival_artist, back_populates='artists')
     def __repr__(self):
-        return 1
+        return f'Id: {self.id},' \
+            + f'Name: {self.name}' \
+            # + f'Genre: {self.genre}'
     
 class Festival(Base):
     __tablename__ = "festivals"
@@ -41,33 +44,58 @@ class Festival(Base):
     day_two = Column(String())
     day_three = Column(String())
     artists = relationship('Artist', secondary=festival_artist, back_populates='festivals')
-
+    def __repr__(self):
+        return f'Id: {self.id},' \
+            + f'Name: {self.name},' \
+            + f'Start_date: {self.day_one},' \
+            + f'End_date: {self.day_three}'
+            
 if __name__ == '__main__':
     engine = create_engine('sqlite:///concert_app.db')
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    d1 = '2023-08-11'
-    d2 = '2023-08-12'
-    d3 = '2023-08-13'
+    # manually setting up data for db
+    # if db being annoying, just delete both db files and run models.py again, db will be recreated
+        # or run updates (CRUD)
+        
+    #tuples
+    dates_list = ('2023-08-11', '2023-08-12', '2023-08-13')
+    # dates_list[0]
     t1 = '6:30 pm'
     t2 = '7:30 pm'
     t3 = '8:30 pm'
     
-    ari = Artist(name='Ariana Grande', day_perform=d2, stage=1)
-    zedd = Artist(name='Zedd', day_perform=d2, stage=2)
-    
-    
     # coachella = Festival(name="Coachella", day_one=d1, day_two=d2, day_three=d3)
-
-    # associate artist with festival
-    # f1.artists.append(asd)
     # session.add(coachella)
+    # session.commit()
+        # create instance of festival, day1-3 placeholder properties for now
+    
+    
+    rex = Artist(name='Rex Orange County', stage=1, time=t1, day_perform = dates_list[0])
+    wknd2 = Artist(name='The Weeknd', stage=2, time=t1, day_perform = dates_list[0])
+    zedd2 = Artist(name='Zedd', stage=1, time=t2, day_perform = dates_list[0])
+    gryf2 = Artist(name='Gryffin', stage=2, time =t2, day_perform = dates_list[0])
+    
+    rex2 = Artist(name='Rex Orange County', stage=1, time=t1, day_perform= dates_list[1])
+    ari = Artist(name='Ariana Grande', stage=1, time=t2, day_perform = dates_list[1])
+    ari2 = Artist(name='Ariana Grande', stage=1, time=t3, day_perform = dates_list[1])
+    zedd = Artist(name='Zedd', stage=2, time=t1, day_perform = dates_list[1])
+    
+    wknd = Artist(name='The Weeknd', stage = 1, time=t1, day_perform = dates_list[2])
+    ari3 = Artist(name='Ariana Grande', stage=1, time=t3, day_perform = dates_list[2])
+    khalid = Artist(name='Khalid', stage=1, time =t2, day_perform = dates_list[2])
+    khalid2 = Artist(name='Khalid', stage=2, time =t3, day_perform = dates_list[2])
+    gryf = Artist(name='Gryffin', stage=2, time =t2, day_perform = dates_list[2])
+    
+    
+    
     
     coachella = session.query(Festival).filter_by(name='Coachella').first()
-    coachella.artists.append(ari)
-    
+    coachella.artists.extend([rex2,ari2,ari3,wknd2,zedd2,khalid2,gryf2])
+    # extend = append iterables
+    # append artists to festival selected using query 
     
     session.commit()
 
@@ -83,10 +111,10 @@ if __name__ == '__main__':
 #     festival_id = Column(Integer, ForeignKey("festival.id"))
 #     festival = relationship("Festival", backref="performing_artists")
     
-#     def __repr__(self):
-#         return f'Id: {self.id},' \
-#             + f'Name: {self.name}' \
-#             + f'Genre: {self.genre}'
+    # def __repr__(self):
+    #     return f'Id: {self.id},' \
+    #         + f'Name: {self.name}' \
+    #         + f'Genre: {self.genre}'
     
 
 
