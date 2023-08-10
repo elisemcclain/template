@@ -3,6 +3,15 @@
 # from db import create_session
 import sqlite3, os, time, sys
 from pyfiglet import Figlet
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from models import Base
+engine = create_engine('sqlite:///concert_app.db')
+Base.metadata.create_all(engine)
+   
+Session = sessionmaker(bind=engine)
+session = Session()
+
 conn = sqlite3.connect('concert_app.db')
 cursor = conn.cursor()
 user_input = ""
@@ -16,6 +25,22 @@ for i in names:
     print(f.renderText(i)),
     sys.stdout.flush()
     time.sleep(0.5)
+
+def display_animation():
+    num_frames = 17
+    num_repeats = 3
+    sleep_time = 0.05
+
+    for _ in range(num_repeats):
+        for i in range(num_frames):
+            with open(f'./ib/db/dance_animation/{i}.txt', 'r') as file:
+                frame_content = file.read()
+                print(frame_content)
+            time.sleep(sleep_time)
+    
+def main():
+    display_animation()
+
                     
 while user_input not in ["quit", "q"]:
 
@@ -102,6 +127,8 @@ conn.close()
 
 
 
+if __name__ == "__main__":
+    main()
 
 
 

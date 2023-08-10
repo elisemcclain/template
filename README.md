@@ -18,7 +18,7 @@ As congratulations for completeing your bootcamp we would like to invite you to 
 
 ## How to run the command line
 
-In the terminal....
+Run `$ python cli.py` in the terminal, this will bring you to the beginning of the app. You should see "Welcome to Flatfest!!" Type a number to continue: 1. Festival Dates 2. Details by Artist 3. Details by genre. Type "quit" or "q" to exit. Follow the prompts to move through each section, to get back to the home screen type "back" or "b".
 
 ## Created by-
 
