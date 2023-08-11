@@ -73,7 +73,7 @@ if __name__ == '__main__':
     # print(gen1.artists)
 
     flatfest = session.query(Festival).filter_by(name='Flatfest').first()
-    flatfest.artists.extend([rex, zedd2, ella, bruno, wknd2, gryf2, rex2, ari, ari2, dhruv, zedd, west, wknd, orange, ari3, drag, gryf, khalid])
+    # flatfest.artists.extend([rex, zedd2, ella, bruno, wknd2, gryf2, rex2, ari, ari2, dhruv, zedd, west, wknd, orange, ari3, drag, gryf, khalid])
     # extend = append iterables
     # append artists to festival selected using query 
     

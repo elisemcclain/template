@@ -26,20 +26,39 @@ for i in names:
     sys.stdout.flush()
     time.sleep(0.5)
 
-def display_animation():
-    num_frames = 17
-    num_repeats = 3
-    sleep_time = 0.05
+# def display_animation():
+#     num_frames = 17
+#     num_repeats = 3
+#     sleep_time = 0.05
 
-    for _ in range(num_repeats):
-        for i in range(num_frames):
-            with open(f'./ib/db/dance_animation/{i}.txt', 'r') as file:
-                frame_content = file.read()
-                print(frame_content)
-            time.sleep(sleep_time)
+#     for _ in range(num_repeats):
+#         for i in range(num_frames):
+#             with open(f'./ib/db/dance_animation/{i}.txt', 'r') as file:
+#                 frame_content = file.read()
+#                 print(frame_content)
+#             time.sleep(sleep_time)
     
-def main():
-    display_animation()
+# def main():
+#     display_animation()
+
+# lib/db/dance_animation
+
+dance_animation = ["0.txt", "1.txt", "2.txt", "3.txt", "4.txt","5.txt","6.txt","7.txt","8.txt","9.txt","10.txt","11.txt", "12.txt", "13.txt","14.txt", "15.txt", "16.txt"]
+reading = ["reading.txt","reading2.txt"]
+
+def display_animations(filenames, delay=.05, repeat=4):
+    frames = []
+    for name in filenames:
+        with open(name, 'r', encoding = 'utf8') as f:
+            frames.append(f.readlines())
+    for i in range(repeat):
+        for frame in frames:
+            print(''.join(frame))
+            time.sleep(delay)
+            os.system('clear')
+
+display_animations(dance_animation)
+
 
                     
 while user_input not in ["quit", "q"]:
