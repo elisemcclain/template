@@ -26,23 +26,6 @@ for i in names:
     sys.stdout.flush()
     time.sleep(0.5)
 
-# def display_animation():
-#     num_frames = 17
-#     num_repeats = 3
-#     sleep_time = 0.05
-
-#     for _ in range(num_repeats):
-#         for i in range(num_frames):
-#             with open(f'./ib/db/dance_animation/{i}.txt', 'r') as file:
-#                 frame_content = file.read()
-#                 print(frame_content)
-#             time.sleep(sleep_time)
-    
-# def main():
-#     display_animation()
-
-# lib/db/dance_animation
-
 dance_animation = ["0.txt", "1.txt", "2.txt", "3.txt", "4.txt","5.txt","6.txt","7.txt","8.txt","9.txt","10.txt","11.txt", "12.txt", "13.txt","14.txt", "15.txt", "16.txt"]
 reading = ["reading.txt","reading2.txt"]
 
@@ -120,15 +103,12 @@ while user_input not in ["quit", "q"]:
             for row in sorted(set(cursor.fetchall())):
                 print(row[0])
             second_input = input('\nFind artists for any genre: \n (Type "back" or "b" to return) \n' + str)
-
-
-    
     
     # elif user_input == '4':
     #     print('Festival name (e.g. Coachella)')
     #     sql1 = "INSERT INTO"
     #     second_
-    #     pass
+    
     else:
         if user_input in ['quit', 'q']:
             exit()
@@ -136,12 +116,6 @@ while user_input not in ["quit", "q"]:
         time.sleep(1)
         user_input = input(f.renderText('Welcome to FlatFest ! !') + 'Type a number to continue: \n 1. Festival Dates \n 2. Details by Artist \n 3. Details by Genre \n 4. Add New Performance \n (Type "quit" or "q" to exit) \n')
 
-    # elif user_input == '4':
-    #     pass
-        #
-        
-
-# print("hello " + input)
 conn.close()
 
 
